@@ -1,0 +1,760 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>808</width>
+    <height>782</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_8">
+    <item row="0" column="0">
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="3" column="0" colspan="2">
+       <widget class="QSplitter" name="splitter">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+        <widget class="QTabWidget" name="LeftTab">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="currentIndex">
+          <number>1</number>
+         </property>
+         <widget class="QWidget" name="LocalTab">
+          <attribute name="title">
+           <string>Local</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_3">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="LocalDirBut">
+             <property name="text">
+              <string>Load Directory</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="LocalTableL">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="LocalQuickRefreshButton">
+             <property name="text">
+              <string>Quick Refresh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="LocalFullRefreshButton">
+             <property name="text">
+              <string>Full Refresh</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="RemoteTab">
+          <attribute name="title">
+           <string>Remote</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="RemoteTableL">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="LocalDirBut_2">
+             <property name="text">
+              <string>Load XBMC</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="RemoteQuickRefreshButton2">
+             <property name="text">
+              <string>Quick Refresh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="RemoteFullRefreshButton2">
+             <property name="text">
+              <string>Full Refresh</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="PlaylistTab">
+          <attribute name="title">
+           <string>Playlist</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_4">
+           <item row="0" column="0">
+            <widget class="QPushButton" name="LeftLoadPlaylistBut">
+             <property name="text">
+              <string>Load Playlist</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="pushButton">
+             <property name="text">
+              <string>Save Local</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="pushButton_4">
+             <property name="text">
+              <string>Save Remote</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="LeftPlaylistTable">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="font">
+              <font>
+               <pointsize>9</pointsize>
+              </font>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+        <widget class="QTabWidget" name="RightTab">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="LocalTab_2">
+          <attribute name="title">
+           <string>Local</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_5">
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="LocalTableR">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="LocalDirBut_3">
+             <property name="text">
+              <string>Load Directory</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="LocalQuickRefreshButton2">
+             <property name="text">
+              <string>Quick Refresh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="LocalFullRefreshButton2">
+             <property name="text">
+              <string>Full Refresh</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="RemoteTab_2">
+          <attribute name="title">
+           <string>Remote</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_6">
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="RemoteTableR">
+             <property name="contextMenuPolicy">
+              <enum>Qt::CustomContextMenu</enum>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="LocalDirBut_4">
+             <property name="text">
+              <string>Load XBMC</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1">
+            <widget class="QPushButton" name="RemoteQuickRefreshButton">
+             <property name="text">
+              <string>Quick Refresh</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="RemoteFullRefreshButton">
+             <property name="text">
+              <string>Full Refresh</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QWidget" name="PlaylistTab_2">
+          <attribute name="title">
+           <string>Playlist</string>
+          </attribute>
+          <layout class="QGridLayout" name="gridLayout_7">
+           <item row="0" column="1">
+            <widget class="QPushButton" name="pushButton_7">
+             <property name="text">
+              <string>Save Local</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="0">
+            <widget class="QPushButton" name="RightLoadPlaylistBut">
+             <property name="text">
+              <string>Load Playlist</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2">
+            <widget class="QPushButton" name="pushButton_8">
+             <property name="text">
+              <string>Save Remote</string>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="0" colspan="3">
+            <widget class="QTableView" name="RightPlaylistTable">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="selectionBehavior">
+              <enum>QAbstractItemView::SelectRows</enum>
+             </property>
+             <attribute name="verticalHeaderVisible">
+              <bool>false</bool>
+             </attribute>
+             <attribute name="verticalHeaderDefaultSectionSize">
+              <number>20</number>
+             </attribute>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </widget>
+       </widget>
+      </item>
+      <item row="2" column="0" colspan="2">
+       <widget class="QPushButton" name="SyncBut">
+        <property name="text">
+         <string>Sync Local and Remote</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>808</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPJS_Test">
+    <property name="title">
+     <string>PJS Test</string>
+    </property>
+   </widget>
+   <addaction name="menuPJS_Test"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>SyncBut</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>sync_files()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>590</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>806</x>
+     <y>176</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalDirBut_3</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_edit_dirs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>535</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>804</x>
+     <y>287</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalDirBut</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_edit_dirs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>544</x>
+     <y>254</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalDirBut_2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_edit_dirs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>95</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>5</x>
+     <y>536</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalDirBut_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_edit_dirs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>806</x>
+     <y>359</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LeftLoadPlaylistBut</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>left_load_playlist()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>44</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>6</x>
+     <y>312</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RightLoadPlaylistBut</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>right_load_playlist()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>441</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>802</x>
+     <y>313</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_4</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>left_save_remote()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>7</x>
+     <y>401</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>left_save_local()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>8</x>
+     <y>474</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_8</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>right_save_remote()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>804</x>
+     <y>419</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton_7</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>right_save_local()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>470</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>805</x>
+     <y>519</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteTableR</sender>
+   <signal>customContextMenuRequested(QPoint)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>right_remote_context(QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>595</x>
+     <y>757</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalTableL</sender>
+   <signal>customContextMenuRequested(QPoint)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>left_local_context(QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>131</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>213</x>
+     <y>758</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalTableR</sender>
+   <signal>customContextMenuRequested(QPoint)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>right_local_context(QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>498</x>
+     <y>723</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>515</x>
+     <y>759</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteTableL</sender>
+   <signal>customContextMenuRequested(QPoint)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>left_remote_context(QPoint)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>715</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>349</x>
+     <y>756</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteQuickRefreshButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_quick_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>263</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>805</x>
+     <y>133</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteFullRefreshButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_full_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>168</x>
+     <y>759</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteFullRefreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_full_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>RemoteQuickRefreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>remote_quick_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>470</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalFullRefreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_full_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>102</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalFullRefreshButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_full_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>784</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalQuickRefreshButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_quick_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>73</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>LocalQuickRefreshButton2</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>local_quick_refresh()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>660</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>403</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>ConnectClick()</slot>
+  <slot>PlayClick()</slot>
+  <slot>Mute()</slot>
+  <slot>GetVolume()</slot>
+  <slot>on_close()</slot>
+  <slot>local_edit_dirs()</slot>
+  <slot>remote_edit_dirs()</slot>
+  <slot>sync_files()</slot>
+  <slot>left_load_playlist()</slot>
+  <slot>right_load_playlist()</slot>
+  <slot>left_save_remote()</slot>
+  <slot>right_save_remote()</slot>
+  <slot>left_save_local()</slot>
+  <slot>right_save_local()</slot>
+  <slot>right_remote_context(QPoint)</slot>
+  <slot>right_local_context(QPoint)</slot>
+  <slot>left_local_context(QPoint)</slot>
+  <slot>left_remote_context(QPoint)</slot>
+  <slot>local_quick_refresh()</slot>
+  <slot>remote_full_refresh()</slot>
+  <slot>remote_quick_refresh()</slot>
+  <slot>local_full_refresh()</slot>
+ </slots>
+</ui>

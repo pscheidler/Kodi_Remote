@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<playlist xmlns="http://xspf.org/ns/0/" xmlns:vlc="http://www.videolan.org/vlc/playlist/ns/0/" version="1">
+	<title>Playlist</title>
+	<trackList>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/A%20Very%20Special%20Christmas%20-%20Live%20From%20Washington%20D.C_/03%20-%20Please%20Come%20Home%20For%20Christmas.mp3</location>
+			<title>Please Come Home For Christmas</title>
+			<creator>Jon Bon Jovi</creator>
+			<album>A Very Special Christmas - Live From Washington D.C.</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 208688328</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Jon%20Bon%20Jovi/A%20Very%20Special%20Christmas%20-%20Live%20From%20Washington%20D.C./art.jpg</image>
+			<duration>193053</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>0</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Big%20Bad%20Voodoo%20Daddy/Everything%20You%20Want%20For%20Christmas/03%20-%20Mr.%20Heatmiser.mp3</location>
+			<title>Mr. Heatmiser</title>
+			<creator>Big Bad Voodoo Daddy</creator>
+			<album>Everything You Want For Christmas</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 208347314</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Big%20Bad%20Voodoo%20Daddy/Everything%20You%20Want%20For%20Christmas/art.jpg</image>
+			<duration>262222</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>1</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Chaka%20Demus%20%26%20Pliers/Murder%20She%20Wrote%20Single/01%20-%20Murder%20She%20Wrote%20%28Original%20Mix%29.mp3</location>
+			<title>Murder She Wrote (Original Mix)</title>
+			<creator>Chaka Demus &amp; Pliers</creator>
+			<album>Murder She Wrote Single</album>
+			<trackNum>1</trackNum>
+			<annotation>Amazon.com Song ID: 200344475</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Chaka%20Demus%20%26%20Pliers/Murder%20She%20Wrote%20Single/art.jpg</image>
+			<duration>247201</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>2</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Christmas%20A%20Go-Go/03%20-%20Merry%20Christmas%20%28I%20Don%27t%20Want%20To%20Fight%20Tonight%29.mp3</location>
+			<title>Merry Christmas (I Don&#39;t Want To Fight Tonight)</title>
+			<creator>Ramones</creator>
+			<album>Christmas A Go-Go</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 207102164</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Ramones/Christmas%20A%20Go-Go/art.jpg</image>
+			<duration>124268</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>3</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Christmas%20A%20Go-Go/13%20-%20Santa%27s%20Coming%20Home.mp3</location>
+			<title>Santa&#39;s Coming Home</title>
+			<creator>Cocktail Slippers</creator>
+			<album>Christmas A Go-Go</album>
+			<trackNum>13</trackNum>
+			<annotation>Amazon.com Song ID: 207102174</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Cocktail%20Slippers/Christmas%20A%20Go-Go/art.jpg</image>
+			<duration>196654</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>4</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Daniels%20%26%20Charlie/Joy%20To%20The%20World_%20A%20Bluegrass%20Christmas/03%20-%20Blue%20Christmas%20%28feat.%20Jewel%29.mp3</location>
+			<title>Blue Christmas (feat. Jewel)</title>
+			<creator>Charlie Daniels</creator>
+			<album>Joy To The World: A Bluegrass Christmas</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 213109376</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Charlie%20Daniels/Joy%20To%20The%20World_%20A%20Bluegrass%20Christmas/art.jpg</image>
+			<duration>200730</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>5</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Fountains%20Of%20Wayne/Welcome%20Interstate%20Managers/06%20-%20Valley%20Winter%20Song.mp3</location>
+			<title>Valley Winter Song</title>
+			<creator>Fountains Of Wayne</creator>
+			<album>Welcome Interstate Managers</album>
+			<trackNum>6</trackNum>
+			<annotation>Amazon.com Song ID: 202122491</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Fountains%20Of%20Wayne/Welcome%20Interstate%20Managers/art.jpg</image>
+			<duration>215018</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>6</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Frank%20Lee%20Sprague/Merry%20Merseybeat%20Christmas/03%20-%20Christmas%20Time.mp3</location>
+			<title>Christmas Time</title>
+			<creator>Frank Lee Sprague</creator>
+			<album>Merry Merseybeat Christmas</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 202488377</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Frank%20Lee%20Sprague/Merry%20Merseybeat%20Christmas/art.jpg</image>
+			<duration>147519</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>7</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Frank%20Lee%20Sprague/Merry%20Merseybeat%20Christmas/11%20-%20Christmas%20Carol.mp3</location>
+			<title>Christmas Carol</title>
+			<creator>Frank Lee Sprague</creator>
+			<album>Merry Merseybeat Christmas</album>
+			<trackNum>11</trackNum>
+			<annotation>Amazon.com Song ID: 202488385</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Frank%20Lee%20Sprague/Merry%20Merseybeat%20Christmas/art.jpg</image>
+			<duration>129626</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>8</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Generationals/08%20-%20When%20They%20Fight%20They%20Fight.mp3</location>
+			<title>When They Fight They Fight</title>
+			<creator>Generationals</creator>
+			<album>CMJ 2009: The Bands, The Music, The City, Vol. 3</album>
+			<trackNum>8</trackNum>
+			<annotation>Amazon.com Song ID: 213198577</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Generationals/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol.%203/art.jpg</image>
+			<duration>200259</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>9</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Hawaiian%20Style%20Christmas/04%20-%20Where%27s%20the%20Snow.mp3</location>
+			<title>Where’s the Snow</title>
+			<creator>Ho’onu’a</creator>
+			<album>Hawaiian Style Christmas</album>
+			<trackNum>4</trackNum>
+			<annotation>Amazon.com Song ID: 207048634</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Ho%E2%80%99onu%E2%80%99a/Hawaiian%20Style%20Christmas/art.jpg</image>
+			<duration>162067</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>10</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Jewel/Joy_%20A%20Holiday%20Collection/08%20-%20Rudolph%20The%20Red%20Nosed%20Reindeer%20%28%20LP%20Version%20%29.mp3</location>
+			<title>Rudolph The Red Nosed Reindeer ( LP Version )</title>
+			<creator>Jewel</creator>
+			<album>Joy: A Holiday Collection</album>
+			<trackNum>8</trackNum>
+			<annotation>Amazon.com Song ID: 203536253</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Jewel/Joy_%20A%20Holiday%20Collection/art.jpg</image>
+			<duration>113610</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>11</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/02%20-%20The%20Heartache%20Can%20Wait.mp3</location>
+			<title>The Heartache Can Wait</title>
+			<creator>Brandi Carlile</creator>
+			<album>The Hotel Café presents... Winter Songs</album>
+			<trackNum>2</trackNum>
+			<annotation>Amazon.com Song ID: 207300833</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Brandi%20Carlile/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/art.jpg</image>
+			<duration>217291</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>12</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/03%20-%20All%20My%20Bells%20Are%20Ringing.mp3</location>
+			<title>All My Bells Are Ringing</title>
+			<creator>Lenka</creator>
+			<album>The Hotel Café presents... Winter Songs</album>
+			<trackNum>3</trackNum>
+			<annotation>Amazon.com Song ID: 207300834</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Lenka/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/art.jpg</image>
+			<duration>152324</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>13</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/09%20-%20Maybe%20Next%20Year%20%28X-Mas%20Song%29.mp3</location>
+			<title>Maybe Next Year (X-Mas Song)</title>
+			<creator>Meiko</creator>
+			<album>The Hotel Café presents... Winter Songs</album>
+			<trackNum>9</trackNum>
+			<annotation>Amazon.com Song ID: 207300835</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Meiko/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/art.jpg</image>
+			<duration>191665</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>14</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/13%20-%20Winter%20Wonderland.mp3</location>
+			<title>Winter Wonderland</title>
+			<creator>Kate Havnevik</creator>
+			<album>The Hotel Café presents... Winter Songs</album>
+			<trackNum>13</trackNum>
+			<annotation>Amazon.com Song ID: 207300832</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Kate%20Havnevik/The%20Hotel%20Caf%C3%A9%20presents...%20Winter%20Songs/art.jpg</image>
+			<duration>160135</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>15</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Mountain%20Goats/Tallahassee/07%20-%20No%20Children.mp3</location>
+			<title>No Children</title>
+			<creator>The Mountain Goats</creator>
+			<album>Tallahassee</album>
+			<trackNum>7</trackNum>
+			<annotation>Amazon.com Song ID: 201699552</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Mountain%20Goats/Tallahassee/art.jpg</image>
+			<duration>168363</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>16</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Smithereens/A%20Smithereens%20Christmas/04%20-%20Rockin%27%20Around%20The%20Christmas%20Tree.mp3</location>
+			<title>Rockin&#39; Around The Christmas Tree</title>
+			<creator>The Smithereens</creator>
+			<album>A Smithereens Christmas</album>
+			<trackNum>4</trackNum>
+			<annotation>Amazon.com Song ID: 203035894</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Smithereens/A%20Smithereens%20Christmas/art.jpg</image>
+			<duration>128212</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>17</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/The%20Smiths/15%20-%20There%20Is%20A%20Light%20That%20Never%20Goes%20Out.mp3</location>
+			<title>There Is A Light That Never Goes Out</title>
+			<creator>The Smiths</creator>
+			<album>The Sound Of The Smiths</album>
+			<trackNum>15</trackNum>
+			<annotation>Amazon.com Song ID: 208162165</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Smiths/The%20Sound%20Of%20The%20Smiths/art.jpg</image>
+			<duration>245346</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>18</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/This%20Warm%20December_%20Brushfire%20Holiday%27s%20Vol.%201/04%20-%20No%20Christmas%20For%20Me.mp3</location>
+			<title>No Christmas For Me</title>
+			<creator>Zee Avi</creator>
+			<album>This Warm December: Brushfire Holiday&#39;s Vol. 1</album>
+			<trackNum>4</trackNum>
+			<annotation>Amazon.com Song ID: 208686606</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Zee%20Avi/This%20Warm%20December_%20Brushfire%20Holiday%27s%20Vol.%201/art.jpg</image>
+			<duration>160765</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>19</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/This%20Warm%20December_%20Brushfire%20Holiday%27s%20Vol.%201/10%20-%20Rudolph%20The%20Red%20Nosed%20Reindeer.mp3</location>
+			<title>Rudolph The Red Nosed Reindeer</title>
+			<creator>Jack Johnson</creator>
+			<album>This Warm December: Brushfire Holiday&#39;s Vol. 1</album>
+			<trackNum>10</trackNum>
+			<annotation>Amazon.com Song ID: 208686612</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/Jack%20Johnson/This%20Warm%20December_%20Brushfire%20Holiday%27s%20Vol.%201/art.jpg</image>
+			<duration>129810</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>20</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Various%20Artists/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol_%203/14%20-%20Light%20At%20The%20End%20Of%20The%20Tunnel.mp3</location>
+			<title>Light At The End Of The Tunnel</title>
+			<creator>The Bloodsugars</creator>
+			<album>CMJ 2009: The Bands, The Music, The City, Vol. 3</album>
+			<trackNum>14</trackNum>
+			<annotation>Amazon.com Song ID: 213198583</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Bloodsugars/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol.%203/art.jpg</image>
+			<duration>268779</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>21</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Various%20Artists/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol_%203/15%20-%20Gloomy%20Monday%20Morning.mp3</location>
+			<title>Gloomy Monday Morning</title>
+			<creator>The Black Hollies</creator>
+			<album>CMJ 2009: The Bands, The Music, The City, Vol. 3</album>
+			<trackNum>15</trackNum>
+			<annotation>Amazon.com Song ID: 213198584</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Black%20Hollies/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol.%203/art.jpg</image>
+			<duration>194303</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>22</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+		<track>
+			<location>file:///C:/Users/pscheidler/Music/Amazon%20MP3/Various%20Artists/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol_%203/16%20-%20The%20Proposition.mp3</location>
+			<title>The Proposition</title>
+			<creator>The Budos Band</creator>
+			<album>CMJ 2009: The Bands, The Music, The City, Vol. 3</album>
+			<trackNum>16</trackNum>
+			<annotation>Amazon.com Song ID: 213198585</annotation>
+			<image>file:///C:/Users/pscheidler/AppData/Roaming/vlc/art/artistalbum/The%20Budos%20Band/CMJ%202009_%20The%20Bands%2C%20The%20Music%2C%20The%20City%2C%20Vol.%203/art.jpg</image>
+			<duration>172569</duration>
+			<extension application="http://www.videolan.org/vlc/playlist/0">
+				<vlc:id>23</vlc:id>
+				<vlc:option>file-caching=300</vlc:option>
+			</extension>
+		</track>
+	</trackList>
+	<extension application="http://www.videolan.org/vlc/playlist/0">
+			<vlc:item tid="0"/>
+			<vlc:item tid="1"/>
+			<vlc:item tid="2"/>
+			<vlc:item tid="3"/>
+			<vlc:item tid="4"/>
+			<vlc:item tid="5"/>
+			<vlc:item tid="6"/>
+			<vlc:item tid="7"/>
+			<vlc:item tid="8"/>
+			<vlc:item tid="9"/>
+			<vlc:item tid="10"/>
+			<vlc:item tid="11"/>
+			<vlc:item tid="12"/>
+			<vlc:item tid="13"/>
+			<vlc:item tid="14"/>
+			<vlc:item tid="15"/>
+			<vlc:item tid="16"/>
+			<vlc:item tid="17"/>
+			<vlc:item tid="18"/>
+			<vlc:item tid="19"/>
+			<vlc:item tid="20"/>
+			<vlc:item tid="21"/>
+			<vlc:item tid="22"/>
+			<vlc:item tid="23"/>
+	</extension>
+</playlist>
