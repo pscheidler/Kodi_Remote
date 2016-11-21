@@ -1,5 +1,5 @@
 __author__ = 'pscheidler'
-from PySide import QtCore
+from PyQt5 import QtCore
 import operator
 import os
 import queue
@@ -47,14 +47,14 @@ class MediaLibrary(QtCore.QAbstractTableModel):
 
     def sort(self, col, order):
         """sort table by given column number col"""
-        self.emit(QtCore.SIGNAL("layoutAboutToBeChanged()"))
+        self.layoutAboutToBeChanged.emit()
         try:
             self.my_list = sorted(self.my_list, key=operator.itemgetter(self.column_names[col]))
         except:
             print("Can't sort column %s" % col)
         if order == QtCore.Qt.DescendingOrder:
             self.my_list.reverse()
-        self.emit(QtCore.SIGNAL("layoutChanged()"))
+        self.layoutChanged.emit()
 
     def insertRows(self, data):
         rows = self.rowCount(None)

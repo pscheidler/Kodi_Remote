@@ -1,71 +1,46 @@
-from PySide import QtGui
-from PySide import QtCore
+from PyQt5 import QtCore
+from PyQt5 import QtGui
+import PyQt5.QtWidgets as qtw
 import queue
 import MediaLibrary
 import PlaylistTable
 import PlaylistScanner
-from UiLoader import UiLoader
 import FileScanner
 import PickleHandler
 import os
 import shutil
+from Ui_MainWindow import Ui_MainWindow
 
 #Base_Dir = "C:\\Users\\pscheidler\\Documents\\Work\\Xbmc Remote\\BetaUi\\"
 #Base_Dir = "C:\\Users\\Janel\\Documents\\XBMC_Control\\"
 Xbmc_Music = "\\\\192.168.1.135\\Music"
 Xbmc_Playlist = '\\\\192.168.1.135\\Userdata\\playlists\\music'
 
-
-def loadUi(uifile, baseinstance=None):
-    """
-    Dynamically load a user interface from the given ``uifile``.
-
-    ``uifile`` is a string containing a file name of the UI file to load.
-
-    If ``baseinstance`` is ``None``, the a new instance of the top-level widget
-    will be created.  Otherwise, the user interface is created within the given
-    ``baseinstance``.  In this case ``baseinstance`` must be an instance of the
-    top-level widget class in the UI file to load, or a subclass thereof.  In
-    other words, if you've created a ``QMainWindow`` interface in the designer,
-    ``baseinstance`` must be a ``QMainWindow`` or a subclass thereof, too.  You
-    cannot load a ``QMainWindow`` UI file with a plain
-    :class:`~PySide.QtGui.QWidget` as ``baseinstance``.
-
-    :method:`~PySide.QtCore.QMetaObject.connectSlotsByName()` is called on the
-    created user interface, so you can implemented your slots according to its
-    conventions in your widget class.
-
-    Return ``baseinstance``, if ``baseinstance`` is not ``None``.  Otherwise
-    return the newly created instance of the user interface.
-    """
-    loader = UiLoader(baseinstance)
-    print(uifile)
-    widget = loader.load(uifile)
-    QtCore.QMetaObject.connectSlotsByName(widget)
-    return widget
-
-
-class MyMainWindow(QtGui.QMainWindow):
+class MyMainWindow(qtw.QMainWindow):
     def __init__(self, *args, **kwds):
-        QtGui.QMainWindow.__init__(self, *args, **kwds)
+        super(MyMainWindow, self).__init__()
+#        QtGui.QMainWindow.__init__(self, *args, **kwds)
+
+        self.ui = Ui_MainWindow()
+        self.ui.setupUi(self)
         self.Base_Dir = os.path.dirname(os.path.realpath(__file__))
-        wid = loadUi(os.path.join(self.Base_Dir, "Main.ui"), self)
+#        wid = loadUi(os.path.join(self.Base_Dir, "Main.ui"), self)
         self.local_table_model = MediaLibrary.MediaLibrary(self, [])
         self.remote_table_model = MediaLibrary.MediaLibrary(self, [])
         self.left_playlist_table = PlaylistTable.PlaylistTable(self, [])
         self.right_playlist_table = PlaylistTable.PlaylistTable(self, [])
-        self.LocalTableL.setModel(self.local_table_model)
-        self.LocalTableR.setModel(self.local_table_model)
-        self.RemoteTableL.setModel(self.remote_table_model)
-        self.RemoteTableR.setModel(self.remote_table_model)
-        self.LeftPlaylistTable.setModel(self.left_playlist_table)
-        self.RightPlaylistTable.setModel(self.right_playlist_table)
-        self.LocalTableL.setSortingEnabled(True)
-        self.LocalTableR.setSortingEnabled(True)
-        self.RemoteTableL.setSortingEnabled(True)
-        self.RemoteTableR.setSortingEnabled(True)
-        self.RightPlaylistTable.setSortingEnabled(True)
-        self.LeftPlaylistTable.setSortingEnabled(True)
+        self.ui.LocalTableL.setModel(self.local_table_model)
+        self.ui.LocalTableR.setModel(self.local_table_model)
+        self.ui.RemoteTableL.setModel(self.remote_table_model)
+        self.ui.RemoteTableR.setModel(self.remote_table_model)
+        self.ui.LeftPlaylistTable.setModel(self.left_playlist_table)
+        self.ui.RightPlaylistTable.setModel(self.right_playlist_table)
+        self.ui.LocalTableL.setSortingEnabled(True)
+        self.ui.LocalTableR.setSortingEnabled(True)
+        self.ui.RemoteTableL.setSortingEnabled(True)
+        self.ui.RemoteTableR.setSortingEnabled(True)
+        self.ui.RightPlaylistTable.setSortingEnabled(True)
+        self.ui.LeftPlaylistTable.setSortingEnabled(True)
         self.AlbumList = {}
         self.sendQueue = queue.Queue()
         self.Id = 1
@@ -73,35 +48,35 @@ class MyMainWindow(QtGui.QMainWindow):
         self.local_server_thread = None
         self.remote_server = None
         self.remote_server_thread = None
-        self.menu = QtGui.QMenu(self)
-        copy_action = QtGui.QAction('Copy File', self)
+        self.menu = qtw.QMenu(self)
+        copy_action = qtw.QAction('Copy File', self)
         copy_action.triggered.connect(self.copy_file)
         self.menu.addAction(copy_action)
         self.context_table = None
         self.present_dest = None
         PickleHandler.PickleReader(self.Base_Dir, self.local_table_model, self.remote_table_model)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def local_edit_dirs(self):
         self.edit_dirs(local=True)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def remote_edit_dirs(self):
         self.edit_dirs(local=False)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def left_save_remote(self):
         self.save_playlist(self.left_playlist_table, local=False)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def left_save_local(self):
         self.save_playlist(self.left_playlist_table, local=True)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def right_save_remote(self):
         self.save_playlist(self.right_playlist_table, local=False)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def right_save_local(self):
         self.save_playlist(self.right_playlist_table, local=True)
 
@@ -125,27 +100,27 @@ class MyMainWindow(QtGui.QMainWindow):
         if display_msg:
             print(display_msg)
 
-    @QtCore.Slot(QtCore.QPoint)
+#    @QtCore.Slot(QtCore.QPoint)
     def left_local_context(self, QPoint):
-        self.context_table = self.LocalTableL
+        self.context_table = self.ui.LocalTableL
         self.present_dest = "Xbmc"
         self.menu.popup(QtGui.QCursor.pos())
 
-    @QtCore.Slot(QtCore.QPoint)
+#    @QtCore.Slot(QtCore.QPoint)
     def right_local_context(self, QPoint):
-        self.context_table = self.LocalTableR
+        self.context_table = self.ui.LocalTableR
         self.present_dest = "Xbmc"
         self.menu.popup(QtGui.QCursor.pos())
 
-    @QtCore.Slot(QtCore.QPoint)
+#    @QtCore.Slot(QtCore.QPoint)
     def left_remote_context(self, QPoint):
-        self.context_table = self.RemoteTableL
+        self.context_table = self.ui.RemoteTableL
         self.present_dest = "Local"
         self.menu.popup(QtGui.QCursor.pos())
 
-    @QtCore.Slot(QtCore.QPoint)
+#    @QtCore.Slot(QtCore.QPoint)
     def right_remote_context(self, QPoint):
-        self.context_table = self.RemoteTableR
+        self.context_table = self.ui.RemoteTableR
         self.present_dest = "Local"
         self.menu.popup(QtGui.QCursor.pos())
 
@@ -200,26 +175,26 @@ class MyMainWindow(QtGui.QMainWindow):
         table.server_thread.started.connect(table.server.run)
         table.server_thread.start()
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def sync_files(self):
         self.local_table_model.sync_prep()
         self.remote_table_model.sync_prep()
         self.local_table_model.sync_to(self.remote_table_model)
         self.remote_table_model.sync_to(self.local_table_model)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def remote_quick_refresh(self):
         MyMainWindow.refresh(self.remote_table_model, ignore_files=self.remote_table_model.get_all_files())
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def local_quick_refresh(self):
         MyMainWindow.refresh(self.local_table_model, ignore_files=self.local_table_model.get_all_files())
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def local_full_refresh(self):
         MyMainWindow.refresh(self.local_table_model)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def remote_full_refresh(self):
         MyMainWindow.refresh(self.remote_table_model)
 
@@ -230,11 +205,11 @@ class MyMainWindow(QtGui.QMainWindow):
         for my_dir in table.get_root_dirs():
             MyMainWindow.scan_dir_to_table(table, my_dir, ignore_files=ignore_files)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def left_load_playlist(self):
         self.load_playlist(self.left_playlist_table)
 
-    @QtCore.Slot()
+#    @QtCore.Slot()
     def right_load_playlist(self):
         self.load_playlist(self.right_playlist_table)
 
@@ -277,7 +252,7 @@ class MyMainWindow(QtGui.QMainWindow):
 
 if __name__ == "__main__":
     import sys
-    app = QtGui.QApplication(sys.argv)
+    app = qtw.QApplication(sys.argv)
     MainWindow = MyMainWindow()
     MainWindow.show()
     sys.exit(app.exec_())

@@ -1,1 +1,1 @@
-c:\python34\scripts\pyside-uic -x Main.ui > QtMain.py
+c:\python35\scripts\pyuic5 -x Main.ui > Ui_MainWindow.py

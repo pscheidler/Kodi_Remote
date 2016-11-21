@@ -1,5 +1,5 @@
 __author__ = 'pscheidler'
-from PySide import QtCore
+from PyQt5 import QtCore
 from MediaTranslate import MediaTranslate
 from XspfReader import XspfReader
 import os.path

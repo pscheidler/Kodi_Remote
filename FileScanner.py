@@ -1,5 +1,5 @@
 __author__ = 'pscheidler'
-from PySide import QtCore
+from PyQt5 import QtCore
 import queue
 from MediaTranslate import MediaTranslate
 import os
@@ -78,7 +78,7 @@ class FileScanner(QtCore.QObject):
 
 
 class LocalFileScanner(FileScanner):
-    signal = QtCore.Signal()
+    signal = QtCore.pyqtSignal()
 
     def __init__(self, file_queue, dir_queue, ignore=(), ignore_files=()):
         FileScanner.__init__(self, file_queue, dir_queue, ignore=ignore, ignore_files=ignore_files)
@@ -93,7 +93,7 @@ class LocalFileScanner(FileScanner):
 
 
 class RemoteFileScanner(FileScanner):
-    signal = QtCore.Signal()
+    signal = QtCore.pyqtSignal()
 
     def __init__(self, file_queue, dir_queue, ignore=()):
         FileScanner.__init__(self, file_queue, dir_queue, ignore=ignore)

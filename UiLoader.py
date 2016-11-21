@@ -1,11 +1,11 @@
 __author__ = 'pscheidler'
 
-from PySide import QtUiTools
+from PyQt5 import QtUiTools
 
 class UiLoader(QtUiTools.QUiLoader):
     """
     Subclass :class:`~PySide.QtUiTools.QUiLoader` to create the user interface
-    in a base instance.
+    in a base instance.PyS
 
     Unlike :class:`~PySide.QtUiTools.QUiLoader` itself this class does not
     create a new instance of the top-level widget, but creates the user
