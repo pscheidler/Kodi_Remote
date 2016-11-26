@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/">
+        <file>DialogWindow.qml</file>
+        <file>DialogWindowForm.ui.qml</file>
+        <file>A.qml</file>
+        <file>AForm.ui.qml</file>
+    </qresource>
+</RCC>

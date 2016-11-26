@@ -1,0 +1,25 @@
+To set up directories:
+ - Go to File: Settings
+ 
+To sync with Kodi:
+ - Push sync Kodi button
+ 
+To sync locally
+ - Push sync Local button
+ 
+Display:
+ - Default columns: 
+ 
+Song List Structure:
+ - Scanned songs have the following data:
+ -- Index - unique ID (?)
+ -- "file" - file name + dir
+ -- "size" - file size
+ -- "length" - song length
+ -- "album"
+ -- "title"
+ -- "genre"
+ -- "year"
+ -- "artist"
+
+Sync List contains the keys as Song List, plus "local indices" and "remote indices". Data is either string or, if data does not agree, an index

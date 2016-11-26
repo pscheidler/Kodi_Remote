@@ -12,7 +12,7 @@ class PlaylistScanner(QtCore.QObject):
     update_interval = 0.1
 
     def __init__(self, local_table, remote_table, my_table):
-        QtCore.QObject.__init__(self)
+        super().__init__()
         self.local_table = local_table
         self.remote_table = remote_table
         self.my_table = my_table

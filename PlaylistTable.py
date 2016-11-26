@@ -5,7 +5,7 @@ from MediaTranslate import MediaTranslate
 
 class PlaylistTable(MediaLibrary):
     def __init__(self, parent, mylist, *args):
-        MediaLibrary.__init__(self, parent, mylist, *args)
+        super().__init__(parent, mylist, *args)
 
     def save(self, file_name, local=True):
         log_msg = {"close":[], "none":[]}

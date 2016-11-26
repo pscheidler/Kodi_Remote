@@ -9,16 +9,15 @@ import FileScanner
 import PickleHandler
 import os
 import shutil
+import Settings
 from Ui_MainWindow import Ui_MainWindow
 
 #Base_Dir = "C:\\Users\\pscheidler\\Documents\\Work\\Xbmc Remote\\BetaUi\\"
 #Base_Dir = "C:\\Users\\Janel\\Documents\\XBMC_Control\\"
-Xbmc_Music = "\\\\192.168.1.135\\Music"
-Xbmc_Playlist = '\\\\192.168.1.135\\Userdata\\playlists\\music'
 
 class MyMainWindow(qtw.QMainWindow):
     def __init__(self, *args, **kwds):
-        super(MyMainWindow, self).__init__()
+        super().__init__()
 #        QtGui.QMainWindow.__init__(self, *args, **kwds)
 
         self.ui = Ui_MainWindow()
@@ -52,6 +51,13 @@ class MyMainWindow(qtw.QMainWindow):
         copy_action = qtw.QAction('Copy File', self)
         copy_action.triggered.connect(self.copy_file)
         self.menu.addAction(copy_action)
+        add_action = qtw.QAction('Add to Playlist', self)
+        add_action.triggered.connect(self.add_to_playlist)
+        self.menu.addAction(add_action)
+        self.playlistMenu = qtw.QMenu(self)
+        delete_action = qtw.QAction('Remove File', self)
+        delete_action.triggered.connect(self.delete_file)
+        self.menu.addAction(delete_action)
         self.context_table = None
         self.present_dest = None
         PickleHandler.PickleReader(self.Base_Dir, self.local_table_model, self.remote_table_model)
@@ -82,7 +88,7 @@ class MyMainWindow(qtw.QMainWindow):
 
     def save_playlist(self, playlist_table, local=True):
         if not local:
-            start_dir = Xbmc_Playlist
+            start_dir = Settings.Remote_Playlist_Dir
         else:
             start_dir = ''
         save_file = str(QtGui.QFileDialog.getSaveFileName(self, "Save Playlist As", start_dir,
@@ -129,7 +135,7 @@ class MyMainWindow(qtw.QMainWindow):
         rows = self.context_table.selectionModel().selectedRows()
         if self.present_dest == "Xbmc":
             table_list = self.local_table_model.my_list
-            target_dir = str(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory", Xbmc_Music))
+            target_dir = str(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory", Settings.Remote_Music_Dir))
         else:
             table_list = self.remote_table_model.my_list
             target_dir = str(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory", ''))
@@ -149,11 +155,26 @@ class MyMainWindow(qtw.QMainWindow):
             shutil.copy(file[0], file[1])
         #print(files)
 
+    def add_to_playlist(self):
+        print("Add Action Called!")
+        model = self.context_table.selectionModel()
+        rows = model.selectedRows()
+        table_list = self.remote_table_model.my_list
+        # target_dir = str(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory", ''))
+        files = []
+        songList = [table_list[row.row()] for row in rows]
+        self.right_playlist_table.insertRows(songList)
+        for row in rows:
+            source_file = table_list[row.row()]['file']
+            print(source_file)
+            # files.append([source_file, target_file])
+        print("Files selected %s" % (files))
+
     def edit_dirs(self, local=True):
         if local:
             dirs = str(QtGui.QFileDialog.getExistingDirectory(self, "Select Directory"))
         else:
-            dirs = Xbmc_Music
+            dirs = Settings.Remote_Music_Dir
         #print("Dirs = %s" % dirs)
         if local:
             table = self.local_table_model
@@ -197,6 +218,9 @@ class MyMainWindow(qtw.QMainWindow):
 #    @QtCore.Slot()
     def remote_full_refresh(self):
         MyMainWindow.refresh(self.remote_table_model)
+
+    def delete_file(self):
+        pass
 
     @staticmethod
     def refresh(table, ignore_files=()):

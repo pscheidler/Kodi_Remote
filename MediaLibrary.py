@@ -13,7 +13,7 @@ class MediaLibrary(QtCore.QAbstractTableModel):
     match_keys = ["album", "artist"]  # These must match for full match, otherwise it is partial
 
     def __init__(self, parent, mylist, *args):
-        QtCore.QAbstractTableModel.__init__(self, parent, *args)
+        super().__init__(parent, *args)
         self.my_list = mylist
         # if len(self.my_list) == 0:
         #           self.my_list = [{x: "" for x in self.item_features}]
@@ -21,8 +21,8 @@ class MediaLibrary(QtCore.QAbstractTableModel):
         self.dir_queue = queue.Queue()
         self.my_dirs = []
         self.root_dirs = []
-        self.server = None
-        self.server_thread = None
+#        self.server = None
+#        self.server_thread = None
 
     def rowCount(self, parent):
         return len(self.my_list)
@@ -58,15 +58,21 @@ class MediaLibrary(QtCore.QAbstractTableModel):
 
     def insertRows(self, data):
         rows = self.rowCount(None)
+        print("1")
         self.beginInsertRows(QtCore.QModelIndex(), rows, rows + len(data) - 1)
         for x in data:
+            print("2")
             if x == "Done":
+                print("GOTDONE")
                 continue
             for y in self.item_features:
+                print("3, %s, %s" % (x, y))
                 if y not in x:
                     x[y] = ""
             self.my_list.append(x)
+        print("4")
         self.endInsertRows()
+        print("5")
         return True
 
     def rows_from_server(self):
@@ -165,8 +171,9 @@ class MediaLibrary(QtCore.QAbstractTableModel):
         return "good"
 
     def close(self):
-        if self.server_thread:
-            self.server_thread.terminate()
+        pass
+        # if self.server_thread:
+        #     self.server_thread.terminate()
 
     def get_file_info(self, search_file):
         search_file = search_file.lower()

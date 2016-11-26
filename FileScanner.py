@@ -13,7 +13,7 @@ class FileScanner(QtCore.QObject):
         self.recv_queue = queue.Queue()
         self.file_queue = file_queue
         self.dir_queue = dir_queue
-        QtCore.QObject.__init__(self)
+        super().__init__()
         self.my_dirs = ignore[:]
         self.ignore_files = ignore_files[:]
         # print(self.ignore_files)
@@ -31,9 +31,10 @@ class FileScanner(QtCore.QObject):
     def send_dirs(self, dir_name, my_files=None, sync_state=None):
         if not my_files:
             my_files = os.listdir(dir_name)
+        print(my_files)
         for fn in my_files:
             full_name = os.path.join(dir_name, fn)
-            #print(full_name)
+            print(full_name)
             if full_name in self.ignore_files:
                 self.ignore_files.remove(full_name)
                 continue
@@ -56,7 +57,9 @@ class FileScanner(QtCore.QObject):
         if not subdirs:
             self.dir_queue.put(dir_name)
             self.send_dirs(dir_name, sync_state=sync_state)
+            print("Done 1")
             self.process_done()
+            print("Done 2")
             return
         walker = os.walk(dir_name)
         for d, s, f in walker:
@@ -81,7 +84,7 @@ class LocalFileScanner(FileScanner):
     signal = QtCore.pyqtSignal()
 
     def __init__(self, file_queue, dir_queue, ignore=(), ignore_files=()):
-        FileScanner.__init__(self, file_queue, dir_queue, ignore=ignore, ignore_files=ignore_files)
+        super().__init__(file_queue, dir_queue, ignore=ignore, ignore_files=ignore_files)
 
     def send_file(self, row_info):
         if FileScanner.send_file(self, row_info):
@@ -96,7 +99,7 @@ class RemoteFileScanner(FileScanner):
     signal = QtCore.pyqtSignal()
 
     def __init__(self, file_queue, dir_queue, ignore=()):
-        FileScanner.__init__(self, file_queue, dir_queue, ignore=ignore)
+        super().__init__(file_queue, dir_queue, ignore=ignore)
 
     def send_file(self, row_info):
         if FileScanner.send_file(self, row_info):

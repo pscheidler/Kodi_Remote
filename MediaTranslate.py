@@ -1,9 +1,10 @@
 __author__ = 'pscheidler'
 import mutagenx
 import os
+import Settings
 
 
-class MediaTranslate:
+class MediaTranslate(object):
     tags = {"mp3": {"album": "TALB", "title": "TIT2", "genre": "TCON", "year": "TDRC", "artist": "TPE1"},
             "m4a": {"album": b'\xa9alb', "title": b'\xa9nam', "genre": b'\xa9gen', "year": b'\xa9day',
                     "artist": b'\xa9ART'}}
@@ -12,17 +13,23 @@ class MediaTranslate:
     def get_info(file_name):
         file_type = file_name[-3:]
         if file_type not in MediaTranslate.tags:
+            print("Illegal type")
             return None
+        print(file_name)
         file_obj = mutagenx.File(file_name)
+        print(file_obj)
         return_val = {"file": file_name,
                       "size": os.path.getsize(file_name),
                       "length": int(file_obj.info.length)
                       }
         for i in MediaTranslate.tags[file_type]:
+            print(i)
             if MediaTranslate.tags[file_type][i] in file_obj:
                 return_val[i] = MediaTranslate.list_strip(file_obj[MediaTranslate.tags[file_type][i]])
             else:
                 return_val[i] = ""
+            print(return_val)
+        print(return_val)
         return return_val
 
     @staticmethod
@@ -53,7 +60,7 @@ class MediaTranslate:
         return_name = file_name
         if return_name.startswith('C:'):
             return return_name[2:]
-        return_name = return_name.replace('\\\\192.168.1.138\\Music', '/storage/music')
+        return_name = return_name.replace(Settings.Remote_Music_Dir, '/storage/music')
         return_name = return_name.replace('\\', '/')
         return return_name
 
@@ -62,7 +69,7 @@ class MediaTranslate:
         return_name = file_name
         if '\\' in return_name and not return_name.startswith('C'):
             return_name = 'C:' + return_name
-        return_name = return_name.replace('/storage/music', '\\\\192.168.1.138\\Music')
+        return_name = return_name.replace('/storage/music', Settings.Remote_Music_Dir)
         return_name = return_name.replace('/', '\\')
         return return_name
 
@@ -98,3 +105,4 @@ class MediaTranslate:
             return result, ""
         file_name = MediaTranslate.playlist_name(file_name)
         return result, '#EXTINF:%i,%s - %s\n%s\n' % (length, song_info['artist'], song_info['title'], file_name)
+

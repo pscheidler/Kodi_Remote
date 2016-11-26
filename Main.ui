@@ -193,7 +193,7 @@
           </sizepolicy>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>2</number>
          </property>
          <widget class="QWidget" name="LocalTab_2">
           <attribute name="title">
@@ -355,12 +355,18 @@
    </property>
    <widget class="QMenu" name="menuPJS_Test">
     <property name="title">
-     <string>PJS Test</string>
+     <string>File</string>
     </property>
+    <addaction name="actionSettings"/>
    </widget>
    <addaction name="menuPJS_Test"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
  </widget>
  <resources/>
  <connections>
@@ -371,8 +377,8 @@
    <slot>sync_files()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>590</x>
-     <y>70</y>
+     <x>600</x>
+     <y>53</y>
     </hint>
     <hint type="destinationlabel">
      <x>806</x>
@@ -388,7 +394,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>535</x>
-     <y>142</y>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>804</x>
@@ -403,8 +409,8 @@
    <slot>local_edit_dirs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>44</x>
-     <y>122</y>
+     <x>56</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>544</x>
@@ -419,8 +425,8 @@
    <slot>remote_edit_dirs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>142</y>
+     <x>107</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>5</x>
@@ -435,8 +441,8 @@
    <slot>remote_edit_dirs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
-     <y>122</y>
+     <x>535</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>806</x>
@@ -451,8 +457,8 @@
    <slot>left_load_playlist()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>44</x>
-     <y>122</y>
+     <x>56</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>6</x>
@@ -467,8 +473,8 @@
    <slot>right_load_playlist()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>441</x>
-     <y>122</y>
+     <x>535</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>802</x>
@@ -483,8 +489,8 @@
    <slot>left_save_remote()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>122</y>
+     <x>304</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>7</x>
@@ -499,8 +505,8 @@
    <slot>left_save_local()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>122</y>
+     <x>180</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>8</x>
@@ -515,8 +521,8 @@
    <slot>right_save_remote()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>499</x>
-     <y>122</y>
+     <x>784</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>804</x>
@@ -531,8 +537,8 @@
    <slot>right_save_local()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>470</x>
-     <y>122</y>
+     <x>660</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>805</x>
@@ -612,7 +618,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>263</x>
-     <y>142</y>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>805</x>
@@ -628,7 +634,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>388</x>
-     <y>142</y>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>168</x>
@@ -643,8 +649,8 @@
    <slot>remote_full_refresh()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>499</x>
-     <y>122</y>
+     <x>784</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -659,8 +665,8 @@
    <slot>remote_quick_refresh()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>470</x>
-     <y>122</y>
+     <x>660</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -675,8 +681,8 @@
    <slot>local_full_refresh()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>122</y>
+     <x>304</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -692,7 +698,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>784</x>
-     <y>142</y>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -707,8 +713,8 @@
    <slot>local_quick_refresh()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>73</x>
-     <y>122</y>
+     <x>180</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
@@ -724,7 +730,7 @@
    <hints>
     <hint type="sourcelabel">
      <x>660</x>
-     <y>142</y>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>403</x>
