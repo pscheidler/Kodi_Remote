@@ -1,5 +1,5 @@
 __author__ = 'pscheidler'
-import mutagenx
+import mutagen
 import os
 import Settings
 
@@ -13,23 +13,18 @@ class MediaTranslate(object):
     def get_info(file_name):
         file_type = file_name[-3:]
         if file_type not in MediaTranslate.tags:
-            print("Illegal type")
+            print("Illegal type: %s" % (file_type))
             return None
-        print(file_name)
-        file_obj = mutagenx.File(file_name)
-        print(file_obj)
+        file_obj = mutagen.File(file_name)
         return_val = {"file": file_name,
                       "size": os.path.getsize(file_name),
                       "length": int(file_obj.info.length)
                       }
         for i in MediaTranslate.tags[file_type]:
-            print(i)
             if MediaTranslate.tags[file_type][i] in file_obj:
                 return_val[i] = MediaTranslate.list_strip(file_obj[MediaTranslate.tags[file_type][i]])
             else:
                 return_val[i] = ""
-            print(return_val)
-        print(return_val)
         return return_val
 
     @staticmethod

@@ -31,10 +31,8 @@ class FileScanner(QtCore.QObject):
     def send_dirs(self, dir_name, my_files=None, sync_state=None):
         if not my_files:
             my_files = os.listdir(dir_name)
-        print(my_files)
         for fn in my_files:
             full_name = os.path.join(dir_name, fn)
-            print(full_name)
             if full_name in self.ignore_files:
                 self.ignore_files.remove(full_name)
                 continue
@@ -57,13 +55,10 @@ class FileScanner(QtCore.QObject):
         if not subdirs:
             self.dir_queue.put(dir_name)
             self.send_dirs(dir_name, sync_state=sync_state)
-            print("Done 1")
             self.process_done()
-            print("Done 2")
             return
         walker = os.walk(dir_name)
         for d, s, f in walker:
-            print("Dir %s" % d.encode())
             if d not in self.my_dirs:
                 self.dir_queue.put(d)
                 self.send_dirs(d, my_files=f, sync_state="unknown")

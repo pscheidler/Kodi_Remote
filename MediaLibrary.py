@@ -6,7 +6,7 @@ import queue
 
 
 class MediaLibrary(QtCore.QAbstractTableModel):
-    column_names = ["title", "file", "album", "artist", "sync state", "partner"]
+    column_names = ["title", "file", "album", "artist", "local count", "remote count"]
     item_features = {"title", "file", "album", "artist", "sync state", "genre", "year", "track", "length", "image",
                      "partner", "size"}
     search_key = "title"  # When syncing songs, mainly look for same title
@@ -16,7 +16,7 @@ class MediaLibrary(QtCore.QAbstractTableModel):
         super().__init__(parent, *args)
         self.my_list = mylist
         # if len(self.my_list) == 0:
-        #           self.my_list = [{x: "" for x in self.item_features}]
+        #           self.my_list = [{x: "" for x in self.base_keys}]
         self.file_queue = queue.Queue()
         self.dir_queue = queue.Queue()
         self.my_dirs = []
@@ -56,23 +56,12 @@ class MediaLibrary(QtCore.QAbstractTableModel):
             self.my_list.reverse()
         self.layoutChanged.emit()
 
+    # this now expects correctly formatted data!
     def insertRows(self, data):
         rows = self.rowCount(None)
-        print("1")
         self.beginInsertRows(QtCore.QModelIndex(), rows, rows + len(data) - 1)
-        for x in data:
-            print("2")
-            if x == "Done":
-                print("GOTDONE")
-                continue
-            for y in self.item_features:
-                print("3, %s, %s" % (x, y))
-                if y not in x:
-                    x[y] = ""
-            self.my_list.append(x)
-        print("4")
+        self.my_list += data
         self.endInsertRows()
-        print("5")
         return True
 
     def rows_from_server(self):
@@ -85,96 +74,12 @@ class MediaLibrary(QtCore.QAbstractTableModel):
             if my_dir not in self.my_dirs:
                 self.my_dirs.append(my_dir)
 
-    def sync_prep(self):
-        for x in self.my_list:
-            x["sync state"] = "unknown"
-
-    def sync_to(self, model):
-        for x in self.my_list:
-            if x["sync state"] is "unknown":
-                #print(x["title"])
-                model.match_item(x)
-
-    @staticmethod
-    def set_good_match(a, b):
-        a["partner"] = b["file"]
-        b["partner"] = a["file"]
-        a["sync state"] = "good"
-        b["sync state"] = "good"
-
-    @staticmethod
-    def set_close_match(a, b):
-        if not a["sync state"] == "good":
-            a["sync state"] = "close"
-            if not isinstance(a["partner"], list):
-                a["partner"] = [b["file"]]
-            else:
-                a["partner"].append(b["file"])
-        if not b["sync state"] == "good":
-            b["sync state"] = "close"
-            if not isinstance(b["partner"], list):
-                b["partner"] = [a["file"]]
-            else:
-                b["partner"].append(a["file"])
-
-    def run_partner_match(self, item, partner_file):
-        my_item = self.get_file_info(partner_file)
-        if my_item:
-            match = self.match_songs(my_item, item)
-            if match == "good":
-                self.set_good_match(my_item, item)
-                return True
-            if match == "close":
-                self.set_close_match(my_item, item)
-            else:
-                if isinstance(item["partner"], list):
-                    item["partner"].remove(partner_file)
-                else:
-                    item["partner"] = None
-        return False
-
-    def match_item(self, item):
-        #print(item["file"])
-        if item["partner"]:
-            if isinstance(item["partner"], str):
-                if self.run_partner_match(item, item["partner"]):
-                    return
-            elif isinstance(item["partner"], list):
-                for x in item["partner"]:
-                    if self.run_partner_match(item, x):
-                        return
-        for x in self.my_list:
-            match_result = self.match_songs(x, item)
-            if match_result == "good":
-                self.set_good_match(x, item)
-                return True
-            if match_result == "close":
-                self.set_close_match(x, item)
-        if item["sync state"] == "unknown":
-            item["sync state"] = "alone"
-
-    @staticmethod
-    def match_songs(a, b):
-        # Criteria 1: If the file name (excluding dir) and size match, then it is a match
-        if os.path.basename(a['file']).lower == os.path.basename(b['file']).lower():
-            if a['size'] == b['size']:
-                return "good"
-        # If the sizes are too far apart, there is no match
-        if abs(a['size'] - b['size']) > 500000:
-            return False
-        # Otherwise, check the music parameters!
-        if not a[MediaLibrary.search_key] == b[MediaLibrary.search_key]:
-            return False
-        for k in MediaLibrary.match_keys:
-            if a[k] != b[k]:
-                return "close"
-        return "good"
-
     def close(self):
         pass
         # if self.server_thread:
         #     self.server_thread.terminate()
 
+    #TODO: Remove?
     def get_file_info(self, search_file):
         search_file = search_file.lower()
         for x in self.my_list:
@@ -259,3 +164,89 @@ class MediaLibrary(QtCore.QAbstractTableModel):
         self.beginRemoveRows(QtCore.QModelIndex(), 0, len(self.my_list))
         self.my_list = []
         self.endRemoveRows()
+
+# def sync_prep(self):
+#     for x in self.my_list:
+#         x["sync state"] = "unknown"
+#
+# def sync_to(self, model):
+#     for x in self.my_list:
+#         if x["sync state"] is "unknown":
+#             #print(x["title"])
+#             model.match_item(x)
+#
+# @staticmethod
+# def set_good_match(a, b):
+#     a["partner"] = b["file"]
+#     b["partner"] = a["file"]
+#     a["sync state"] = "good"
+#     b["sync state"] = "good"
+#
+# @staticmethod
+# def set_close_match(a, b):
+#     if not a["sync state"] == "good":
+#         a["sync state"] = "close"
+#         if not isinstance(a["partner"], list):
+#             a["partner"] = [b["file"]]
+#         else:
+#             a["partner"].append(b["file"])
+#     if not b["sync state"] == "good":
+#         b["sync state"] = "close"
+#         if not isinstance(b["partner"], list):
+#             b["partner"] = [a["file"]]
+#         else:
+#             b["partner"].append(a["file"])
+#
+# def run_partner_match(self, item, partner_file):
+#     my_item = self.get_file_info(partner_file)
+#     if my_item:
+#         match = self.match_songs(my_item, item)
+#         if match == "good":
+#             self.set_good_match(my_item, item)
+#             return True
+#         if match == "close":
+#             self.set_close_match(my_item, item)
+#         else:
+#             if isinstance(item["partner"], list):
+#                 item["partner"].remove(partner_file)
+#             else:
+#                 item["partner"] = None
+#     return False
+#
+# def match_item(self, item):
+#     #print(item["file"])
+#     if item["partner"]:
+#         if isinstance(item["partner"], str):
+#             if self.run_partner_match(item, item["partner"]):
+#                 return
+#         elif isinstance(item["partner"], list):
+#             for x in item["partner"]:
+#                 if self.run_partner_match(item, x):
+#                     return
+#     for x in self.my_list:
+#         match_result = self.match_songs(x, item)
+#         if match_result == "good":
+#             self.set_good_match(x, item)
+#             return True
+#         if match_result == "close":
+#             self.set_close_match(x, item)
+#     if item["sync state"] == "unknown":
+#         item["sync state"] = "alone"
+
+# @staticmethod
+# def match_songs(a, b):
+#     # Criteria 1: If the file name (excluding dir) and size match, then it is a match
+#     if os.path.basename(a['file']).lower == os.path.basename(b['file']).lower():
+#         if a['size'] == b['size']:
+#             return "good"
+#     # If the sizes are too far apart, there is no match
+#     if abs(a['size'] - b['size']) > 500000:
+#         return False
+#     # Otherwise, check the music parameters!
+#     if not a[MediaLibrary.search_key] == b[MediaLibrary.search_key]:
+#         return False
+#     for k in MediaLibrary.match_keys:
+#         if a[k] != b[k]:
+#             return "close"
+#     return "good"
+#
