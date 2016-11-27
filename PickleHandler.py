@@ -25,8 +25,9 @@ class PickleReader:
         return None
 
     def get_table_info(self, table):
-        table.set_contents(self.get_item())
-        table.add_root_dirs(self.get_item())
+        item = self.get_item()
+        if item :
+            table.set_contents(self.get_item())
 
 
 class PickleWriter:
@@ -48,4 +49,3 @@ class PickleWriter:
 
     def set_table_info(self, table):
         pickle.dump(table.get_contents(), self.PickleFile)
-        pickle.dump(table.get_root_dirs(), self.PickleFile)

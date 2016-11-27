@@ -3,29 +3,19 @@ from PyQt5 import QtCore
 import operator
 import os
 import queue
+from MainSongList import MainSongList
 
 
 class MediaLibrary(QtCore.QAbstractTableModel):
-    column_names = ["title", "file", "album", "artist", "local count", "remote count"]
-    item_features = {"title", "file", "album", "artist", "sync state", "genre", "year", "track", "length", "image",
-                     "partner", "size"}
-    search_key = "title"  # When syncing songs, mainly look for same title
-    match_keys = ["album", "artist"]  # These must match for full match, otherwise it is partial
+    column_names = ["title", "album", "artist", "local count", "remote count"]
 
     def __init__(self, parent, mylist, *args):
         super().__init__(parent, *args)
-        self.my_list = mylist
-        # if len(self.my_list) == 0:
-        #           self.my_list = [{x: "" for x in self.base_keys}]
+        self.song_list = MainSongList(mylist=mylist)
         self.file_queue = queue.Queue()
-        self.dir_queue = queue.Queue()
-        self.my_dirs = []
-        self.root_dirs = []
-#        self.server = None
-#        self.server_thread = None
 
     def rowCount(self, parent):
-        return len(self.my_list)
+        return len(self.song_list.song_list)
 
     def columnCount(self, parent):
         return len(self.column_names)
@@ -35,7 +25,7 @@ class MediaLibrary(QtCore.QAbstractTableModel):
             return None
         elif role != QtCore.Qt.DisplayRole:
             return None
-        return self.my_list[index.row()][self.column_names[index.column()]]
+        return self.song_list.song_list[index.row()][self.column_names[index.column()]]
 
     def headerData(self, col, orientation, role):
         if orientation == QtCore.Qt.Horizontal and role == QtCore.Qt.DisplayRole:
@@ -49,120 +39,76 @@ class MediaLibrary(QtCore.QAbstractTableModel):
         """sort table by given column number col"""
         self.layoutAboutToBeChanged.emit()
         try:
-            self.my_list = sorted(self.my_list, key=operator.itemgetter(self.column_names[col]))
+            self.song_list.song_list = sorted(self.song_list.song_list, key=operator.itemgetter(self.column_names[col]))
         except:
             print("Can't sort column %s" % col)
         if order == QtCore.Qt.DescendingOrder:
-            self.my_list.reverse()
+            self.song_list.song_list.reverse()
         self.layoutChanged.emit()
 
     # this now expects correctly formatted data!
     def insertRows(self, data):
         rows = self.rowCount(None)
-        self.beginInsertRows(QtCore.QModelIndex(), rows, rows + len(data) - 1)
-        self.my_list += data
+        new_rows, data = self.song_list.prep_songs(data)
+        self.beginInsertRows(QtCore.QModelIndex(), rows, rows + new_rows - 1)
+        self.song_list.add_songs(data)
         self.endInsertRows()
         return True
 
     def rows_from_server(self):
+        """ rows_from_server is called by an emit, pulls data out of the file queue, and adds it into the row list """
         row_list = []
         while not self.file_queue.empty():
-            row_list.append(self.file_queue.get())
+            new_row = self.file_queue.get()
+            if new_row != "Done":
+                row_list.append(self.file_queue.get())
         self.insertRows(row_list)
-        while not self.dir_queue.empty():
-            my_dir = self.dir_queue.get()
-            if my_dir not in self.my_dirs:
-                self.my_dirs.append(my_dir)
 
     def close(self):
         pass
         # if self.server_thread:
         #     self.server_thread.terminate()
 
-    #TODO: Remove?
-    def get_file_info(self, search_file):
-        search_file = search_file.lower()
-        for x in self.my_list:
-            if x['file'].lower() == search_file:
-                return x
-        return None
+    # def get_file_info(self, search_file):
+    #     search_file = search_file.lower()
+    #     for x in self.my_list:
+    #         if x['file'].lower() == search_file:
+    #             return x
+    #     return None
 
-    def get_song_info(self, criteria, min_matches=2):
-        keylist = list(criteria.keys())
-        len_keylist = len(keylist)
-        if min_matches > len_keylist:
-            min_matches = len_keylist
-        suggestion_list = []
-        for i, search_key in enumerate(keylist[:1 - min_matches]):
-            for song in self.my_list:
-                if song[search_key] == criteria[search_key]:
-                    matches = 1
-                    for key in keylist[i + 1:]:
-                        if song[key] == criteria[key]:
-                            matches += 1
-                    if matches == len_keylist:
-                        return song
-                    if matches >= min_matches:
-                        suggestion_list.append(song)
-        if not suggestion_list:
-            return None
-        return suggestion_list[0]
-
-    def get_new_files(self, files):
-        return_list = []
-        for x in files:
-            if x not in (y["file"] for y in self.my_list):
-                return_list.append(x)
+    # def get_song_info(self, criteria, min_matches=2):
+    #     keylist = list(criteria.keys())
+    #     len_keylist = len(keylist)
+    #     if min_matches > len_keylist:
+    #         min_matches = len_keylist
+    #     suggestion_list = []
+    #     for i, search_key in enumerate(keylist[:1 - min_matches]):
+    #         for song in self.my_list:
+    #             if song[search_key] == criteria[search_key]:
+    #                 matches = 1
+    #                 for key in keylist[i + 1:]:
+    #                     if song[key] == criteria[key]:
+    #                         matches += 1
+    #                 if matches == len_keylist:
+    #                     return song
+    #                 if matches >= min_matches:
+    #                     suggestion_list.append(song)
+    #     if not suggestion_list:
+    #         return None
+    #     return suggestion_list[0]
 
     def get_all_files(self):
-        return [y["file"] for y in self.my_list]
+        return self.song_list.get_all_files()
 
     def get_contents(self):
-        return self.my_list
+        return self.song_list.song_list
 
     def set_contents(self, data):
         self.insertRows(data)
 
-    def get_dirs(self):
-        return self.my_dirs
-
-    def add_root_dirs(self, new_dir):
-        if type(new_dir) is list:
-            return_value = False
-            for x in new_dir:
-                return_value = return_value or self._add_root_dir(x)
-        else:
-            return_value = self._add_root_dir(new_dir)
-        self.clean_root_dir_list()
-        return return_value
-
-    def _add_root_dir(self, new_dir):
-        new_dir = os.path.join(new_dir, '').upper()
-        if new_dir not in self.root_dirs:
-            self.root_dirs.append(new_dir)
-            return True
-        return False
-
-    def get_root_dirs(self):
-        return self.root_dirs
-
-    def clean_root_dir_list(self):
-        delete_list = []
-        for (ix, x) in enumerate(self.root_dirs):
-            for (iy, y) in enumerate(self.root_dirs):
-                if ix == iy: continue
-                if x in y:
-                    if iy not in delete_list:
-                        delete_list.append(iy)
-        new_list = []
-        for (ix, x) in enumerate(self.root_dirs):
-            if ix not in delete_list:
-                new_list.append(x)
-        self.root_dirs = new_list
-
     def clear_all_rows(self):
-        self.beginRemoveRows(QtCore.QModelIndex(), 0, len(self.my_list))
-        self.my_list = []
+        self.beginRemoveRows(QtCore.QModelIndex(), 0, len(self.song_list.song_list))
+        self.song_list.clear_display()
         self.endRemoveRows()
 
 # def sync_prep(self):

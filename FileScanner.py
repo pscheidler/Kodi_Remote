@@ -9,10 +9,9 @@ import time
 class FileScanner(QtCore.QObject):
     update_interval = 0.1
 
-    def __init__(self, file_queue, dir_queue, ignore=(), ignore_files=()):
+    def __init__(self, file_queue, ignore=(), ignore_files=()):
         self.recv_queue = queue.Queue()
         self.file_queue = file_queue
-        self.dir_queue = dir_queue
         super().__init__()
         self.my_dirs = ignore[:]
         self.ignore_files = ignore_files[:]
@@ -38,8 +37,6 @@ class FileScanner(QtCore.QObject):
                 continue
             file_info = MediaTranslate.get_info(full_name)
             if file_info:
-                if sync_state:
-                    file_info["sync state"] = sync_state
                 self.send_file(file_info)
 
     def set_params(self, dir_name, subdirs=False, sync_state=None):
@@ -47,20 +44,17 @@ class FileScanner(QtCore.QObject):
         self.subdirs = subdirs
         self.sync_state = sync_state
 
-#    def add_dirs(self):
     def run(self):
         dir_name = self.dir_name
         subdirs = self.subdirs
         sync_state = self.sync_state
         if not subdirs:
-            self.dir_queue.put(dir_name)
             self.send_dirs(dir_name, sync_state=sync_state)
             self.process_done()
             return
         walker = os.walk(dir_name)
         for d, s, f in walker:
             if d not in self.my_dirs:
-                self.dir_queue.put(d)
                 self.send_dirs(d, my_files=f, sync_state="unknown")
         self.process_done()
 
@@ -78,8 +72,8 @@ class FileScanner(QtCore.QObject):
 class LocalFileScanner(FileScanner):
     signal = QtCore.pyqtSignal()
 
-    def __init__(self, file_queue, dir_queue, ignore=(), ignore_files=()):
-        super().__init__(file_queue, dir_queue, ignore=ignore, ignore_files=ignore_files)
+    def __init__(self, file_queue, ignore=(), ignore_files=()):
+        super().__init__(file_queue, ignore=ignore, ignore_files=ignore_files)
 
     def send_file(self, row_info):
         if FileScanner.send_file(self, row_info):
@@ -93,8 +87,8 @@ class LocalFileScanner(FileScanner):
 class RemoteFileScanner(FileScanner):
     signal = QtCore.pyqtSignal()
 
-    def __init__(self, file_queue, dir_queue, ignore=()):
-        super().__init__(file_queue, dir_queue, ignore=ignore)
+    def __init__(self, file_queue, ignore=()):
+        super().__init__(file_queue, ignore=ignore)
 
     def send_file(self, row_info):
         if FileScanner.send_file(self, row_info):

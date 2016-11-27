@@ -180,15 +180,14 @@ class MyMainWindow(qtw.QMainWindow):
             table = self.local_table_model
         else:
             table = self.remote_table_model
-        if table.add_root_dirs(dirs):
-            MyMainWindow.scan_dir_to_table(table, dirs)
-            print("Started")
+        MyMainWindow.scan_dir_to_table(table, dirs)
+        print("Started")
         return
 
     @staticmethod
     def scan_dir_to_table(table, my_dir, ignore_files=()):
-        print("Starting scan of %s" % (my_dir))
-        table.server = FileScanner.LocalFileScanner(table.file_queue, table.dir_queue, ignore_files=ignore_files)
+        print("Starting scan of %s" % (my_dir.encode()))
+        table.server = FileScanner.LocalFileScanner(table.file_queue, ignore_files=ignore_files)
         table.server_thread = QtCore.QThread()
         table.server.set_params(my_dir, subdirs=True)
         table.server.moveToThread(table.server_thread)
@@ -226,8 +225,8 @@ class MyMainWindow(qtw.QMainWindow):
     def refresh(table, ignore_files=()):
         if len(ignore_files) == 0:
             table.clear_all_rows()
-        for my_dir in table.get_root_dirs():
-            MyMainWindow.scan_dir_to_table(table, my_dir, ignore_files=ignore_files)
+#        for my_dir in table.get_root_dirs():
+        MyMainWindow.scan_dir_to_table(table, my_dir, ignore_files=ignore_files)
 
 #    @QtCore.Slot()
     def left_load_playlist(self):

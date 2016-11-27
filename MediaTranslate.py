@@ -11,9 +11,9 @@ class MediaTranslate(object):
 
     @staticmethod
     def get_info(file_name):
-        file_type = file_name[-3:]
+        file_type = file_name.split('.')[-1].lower()
         if file_type not in MediaTranslate.tags:
-            print("Illegal type: %s" % (file_type))
+            print("Illegal type: %s (%s)" % (file_type.encode(), file_name.encode()))
             return None
         file_obj = mutagen.File(file_name)
         return_val = {"file": file_name,
@@ -44,8 +44,6 @@ class MediaTranslate(object):
         for fn in my_files:
             file_info = MediaTranslate.get_info(os.path.join(my_dir, fn))
             if file_info:
-                if sync_state:
-                    file_info["sync state"] = sync_state
                 return_value.append(file_info)
        # print(return_value)
         return return_value
